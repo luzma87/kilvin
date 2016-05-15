@@ -1,5 +1,19 @@
 holaaaaaa
+<ul>
+  <% r18n.available_locales.each do |locale| %>
+    <li>
+      <%= locale.code %> <%= locale.title %>
+    </li>
+  <% end %>
+</ul>
 
+<hr/>
+<%= t.page.count(1) %><br/>
+<%= t.page.count(4) %>
+<hr/>
+<%= l Time.now %><br/>
+<%= l Time.now, :human %><br/>
+<%= l Time.now, :full %><br/>
 <hr/>
 <ul>
   <% @pages.each do |page| %>

@@ -1,3 +1,6 @@
 page:
   title: Title
   content: Content
+  count: !!pl
+    1: There is 1 page
+    n: There are %1 pages
