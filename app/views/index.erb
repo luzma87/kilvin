@@ -1,0 +1,14 @@
+holaaaaaa
+
+<hr/>
+<ul>
+  <% @pages.each do |page| %>
+      <li>
+        <strong><%= t.page.title %>:</strong> <%= page.title %>
+        <p>
+          <strong><%= t.page.content %>:</strong>
+          <%= page.content %>
+        </p>
+      </li>
+  <% end %>
+</ul>
