@@ -9,7 +9,7 @@ gem 'rake'
 gem 'rack-flash3'
 gem 'mongo', '~> 2.1'
 gem 'bson_ext'
-gem 'bcrypt', '~> 3.1.11'
+gem 'bcrypt'
 gem 'json-schema'
 gem 'mongoid'
 gem 'r18n-core'
@@ -35,4 +35,7 @@ group :test do
   gem 'bundler-audit'
   gem 'rspec-wait'
   gem 'simplecov'
+
+  gem 'nyan-cat-formatter'
+  gem 'fuubar'
 end

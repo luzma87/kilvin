@@ -4,3 +4,11 @@ page:
   count: !!pl
     1: There is 1 page
     n: There are %1 pages
+
+user:
+  email:
+    errors:
+      blank: 'dddd'
+  errors:
+    email:
+      blank: 'email required!'

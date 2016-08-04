@@ -7,6 +7,7 @@ require 'mongoid'
 require 'sinatra/r18n'
 
 require_relative 'domains/Page'
+require_relative 'domains/user'
 
 class App < Sinatra::Application
   helpers Sinatra::Helpers
@@ -49,15 +50,32 @@ class App < Sinatra::Application
     session[:locale] = params[:locale] ? params[:locale] : 'en'
   end
 
-  get '/pages' do
+  get '/pages/?' do
     @pages = Page.all
     p @pages
     p @pages.first
+
+    user = User.create
+    user.valid?
+    p '....................................'
+    p user.errors
+    p ' '
+    p user.errors.messages
+    p ' '
+    p user.errors.full_messages
+    p '....................................'
     erb :index
+
+    # JSON.dump(status: 'OK', pages: @pages.to_json)
   end
 
   get '/pages/new' do
     Page.create(title: 'generated title', content: 'generated content')
     redirect '/pages'
   end
+
+  get '/floramo/?' do
+    
+  end
+
 end

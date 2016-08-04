@@ -45,6 +45,9 @@ GEM
       activesupport (>= 3.0.0)
     ffaker (2.2.0)
     ffi (1.9.10)
+    fuubar (2.0.0)
+      rspec (~> 3.0)
+      ruby-progressbar (~> 1.4)
     i18n (0.7.0)
     io-like (0.3.0)
     json (1.8.3)
@@ -67,6 +70,8 @@ GEM
     multi_json (1.12.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    nyan-cat-formatter (0.11)
+      rspec (>= 2.99, >= 2.14.2, < 4)
     origin (2.2.0)
     parser (2.3.1.0)
       ast (~> 2.2)
@@ -155,7 +160,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bcrypt (~> 3.1.11)
+  bcrypt
   bson_ext
   bundler-audit
   capybara
@@ -163,9 +168,11 @@ DEPENDENCIES
   chromedriver-helper
   factory_girl
   ffaker
+  fuubar
   json-schema
   mongo (~> 2.1)
   mongoid
+  nyan-cat-formatter
   poltergeist
   puma
   r18n-core
