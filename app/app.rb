@@ -75,7 +75,11 @@ class App < Sinatra::Application
   end
 
   get '/floramo/?' do
-    
+    arr_of_arrs = CSV.read('floramo.csv')
+    p arr_of_arrs
+    arr_of_arrs[0..arr_of_arrs.length].each do |x|
+      # operation here
+    end
   end
 
 end
