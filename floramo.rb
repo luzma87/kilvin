@@ -82,6 +82,11 @@ def task_message(message)
   puts green(border)
 end
 
+def normalize(str)
+  str[:name].downcase.tr('áàäâåã', 'a').tr('éèëê', 'e').tr('íìîï', 'i').tr('óòõöô', 'o')
+    .tr('úùüû', 'u').tr('ñ', 'n')
+end
+
 arr_of_arrs.each do |parts|
   unless headers
     family = parts[0]
@@ -130,8 +135,21 @@ arr_of_arrs.each do |parts|
   headers = false
 end
 
+def build_insert_sql(table, column_list, values_list)
+  sql = "INSERT INTO #{table} (#{column_list.join(', ')}) values("
+  values_list.each.with_index do |value, i|
+    sql += "\"#{value}\""
+    sql += ', ' if i < values_list.size - 1
+  end
+  sql += ')'
+end
+
 task_message('------------------------ Familias SQLs ------------------------')
 familias.each do |familia|
-  p "INSERT INTO familias (id, nombre, nombre_norm) values(\"#{familia[:id]}\", \"#{familia[:name]}\", \"#{familia[:name]}\")"
+  id = familia[:id]
+  name = familia[:name]
+  norm_name = normalize(familia)
+  sql = build_insert_sql('familias', %w(id nombre nombre_norm), [id, name, norm_name])
+  puts "db.execSQL(\"#{sql}\");"
 end
 
