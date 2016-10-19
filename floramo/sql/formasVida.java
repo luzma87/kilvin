@@ -1,0 +1,8 @@
+"4", "cushion"
+"5", "herb"
+"10", "shrub"
+"53", "grass"
+"58", "rosette"
+"177", "aquatic"
+"240", "liana"
+"275", "tree"
