@@ -36,26 +36,24 @@ module Utils
     sql += ')'
   end
 
-  def create_simpler_sqls(items, table_name, arr)
+  def create_simpler_sqls(items, table_name, sql_array, columns_names)
     items.each do |iterator|
       id = iterator[:id]
       name = iterator[:name]
-      columns = %w(KEY_ID KEY_NAME)
       values = [id, name]
-      sql = build_insert_sql(table_name, columns, values)
-      arr.push(sql)
+      sql = build_insert_sql(table_name, columns_names, values)
+      sql_array.push(sql)
     end
   end
 
-  def create_simple_sqls(items, table_name, arr)
+  def create_simple_sqls(items, table_name, sql_array, columns_names)
     items.each do |iterator|
       id = iterator[:id]
       name = iterator[:name]
       norm_name = normalize(iterator[:name])
-      columns = %w(KEY_ID KEY_NAME KEY_NORM_NAME)
       values = [id, name, norm_name]
-      sql = build_insert_sql(table_name, columns, values)
-      arr.push(sql)
+      sql = build_insert_sql(table_name, columns_names, values)
+      sql_array.push(sql)
     end
   end
 

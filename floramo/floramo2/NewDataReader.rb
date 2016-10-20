@@ -7,9 +7,9 @@ module NewDataReader
   def create_base_element(element_name, element_id, array, add_norm_name)
     element = nil
     if element_name
-      element_name = element_name.strip
+      element_name = Utils.trim(element_name)
       if array.collect { |this| this[:name].downcase }.include?(element_name.downcase)
-        element = array.find { |property_find| property_find[:name] == element_name }
+        element = array.find { |property_find| property_find[:name].downcase == element_name.downcase }
       else
         element = { id: element_id, name: element_name }
         if add_norm_name
