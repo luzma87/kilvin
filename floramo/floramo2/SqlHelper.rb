@@ -6,37 +6,33 @@ module SqlHelper
 
   def tables
     {
-      commons_norm: %w(KEY_ID KEY_NAME KEY_NORM_NAME),
-      commons: %w(KEY_ID KEY_NAME),
+      commons_norm: %w(KEY_ID KEY_NOMBRE KEY_NOMBRE_NORM),
+      commons: %w(KEY_ID KEY_NOMBRE),
       color: {
         table: 'TABLE_COLOR',
-        columns: %w(KEY_ID KEY_NOMBRE)
+      },
+      life_form: {
+        table: 'TABLE_FORMA_VIDA',
       },
       place: {
         table: 'TABLE_LUGAR',
-        columns: %w(KEY_ID KEY_NOMBRE KEY_NOMBRE_NORM)
+      },
+      family: {
+        table: 'TABLE_FAMILIA',
       },
       photo: {
         table: 'TABLE_FOTO',
         columns: %w(KEY_ID KEY_ESPECIE_ID KEY_PATH)
-      },
-      family: {
-        table: 'TABLE_FAMILIA',
-        columns: %w(KEY_ID KEY_NOMBRE KEY_NOMBRE_NORM)
       },
       genus: {
         table: 'TABLE_GENERO',
         columns: %w(KEY_ID KEY_NOMBRE KEY_NOMBRE_NORM KEY_FAMILIA_ID)
       },
       species: {
-        table: 'TABLE_SPECIES',
+        table: 'TABLE_ESPECIE',
         columns: %w(KEY_ID KEY_NOMBRE KEY_NOMBRE_NORM KEY_GENERO_ID KEY_ID_TROPICOS KEY_COLOR1_ID
                     KEY_COLOR2_ID KEY_FORMA_VIDA1_ID KEY_FORMA_VIDA2_ID KEY_DESCRIPCION_ES
                     KEY_DISTRIBUCION_ES KEY_DESCRIPCION_EN KEY_DISTRIBUCION_EN KEY_THUMBNAIL)
-      },
-      life_form: {
-        table: 'TABLE_FORMA_VIDA',
-        columns: %w(KEY_ID KEY_NOMBRE)
       },
       species_places: {
         table: 'TABLE_SPECIES_PLACES',
@@ -118,7 +114,7 @@ module SqlHelper
     File.open(filename, 'w') do |file|
       sqls.each do |k, sql|
         Utils.write_message("SQLs #{k.to_s}")
-        file.write("public void insert#{k.to_s[0].upcase}#{k.to_s[1..k.size]}() {\n")
+        file.write("private void insert#{k.to_s[0].upcase}#{k.to_s[1..k.size]}() {\n")
         sql.each { |s| file.write("\tdb.execSQL(\"#{s}\");\n") }
         file.write("}\n\n")
       end

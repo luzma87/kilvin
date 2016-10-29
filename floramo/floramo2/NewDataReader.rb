@@ -76,7 +76,7 @@ module NewDataReader
         provinces = parts[13]
 
         family_obj, family_id = create_base_element(family, family_id, families_array, true)
-        genus_obj, blah = create_genus(family_obj, genus_array, genus, genus_id)
+        genus_obj, genus_id = create_genus(family_obj, genus_array, genus, genus_id)
         color1_obj, blah = create_base_element(color1, nil, colors_array, false)
         color2_obj, blah= create_base_element(color2, nil, colors_array, false)
         life_form1_obj, blah = create_base_element(life_form1, nil, life_forms_array, false)
