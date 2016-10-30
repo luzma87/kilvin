@@ -137,7 +137,7 @@ module NewDataReader
   def set_photos(species_array)
     file = File.new('../fotos/todas', 'r')
     while (line = file.gets)
-      path = Utils.trim(line.downcase)
+      path = Utils.trim(line)
       especie = species_array.find { |e| path.include?(e[:photo_base].downcase) }
       unless especie
         parts = path.split('.')
@@ -160,7 +160,7 @@ module NewDataReader
   def set_thumbs(species_array)
     file = File.new('../fotos/thumbs', 'r')
     while (line = file.gets)
-      path = Utils.trim(line.downcase)
+      path = Utils.trim(line)
       especie = species_array.find { |e| path.include?(e[:photo_base].downcase) }
       unless especie
         parts = path.split('.')
